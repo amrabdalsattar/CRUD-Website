@@ -61,7 +61,8 @@ document.querySelector("#product-input").addEventListener("submit", (e) => {
     }
 });
 
-// Edit Data
+// Update Data
+
 document.querySelector("#products-list").addEventListener("click", (e) => {
     target = e.target;
     if (target.classList.contains("edit")) {
@@ -69,15 +70,25 @@ document.querySelector("#products-list").addEventListener("click", (e) => {
         document.querySelector("#productName").value = selectedRow.cells[0].textContent;
         document.querySelector("#price").value = selectedRow.cells[1].textContent.replace("$", "");
         document.querySelector("#supplier").value = selectedRow.cells[2].textContent;
-
+        document.querySelector(".add-btn").value = "Update Product"; // Change button text
     }
 });
 
-// Delete Product
+// Delete
+
 document.querySelector("#products-list").addEventListener("click", (e) => {
     target = e.target;
     if (target.classList.contains("delete")) {
-        target.parentElement.parentElement.remove();
-        showAlert("Product deleted!", "danger");
+        if (confirm("Are you sure you want to delete this product?")) {
+            target.parentElement.parentElement.remove();
+            selectedRow = null;
+            resetFormButton();
+            showAlert("Product deleted!", "danger");
+        }
     }
 });
+
+// Reset button text after update or add
+function resetFormButton() {
+    document.querySelector(".add-btn").value = "Submit";
+}
