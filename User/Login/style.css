@@ -1,0 +1,16 @@
+body {
+  background-color: #1d2630;
+  color: white;
+}
+
+.error {
+  color: red;
+}
+
+.link {
+  color: #198754;
+}
+
+.libraryName {
+  color: #11ca74;
+}

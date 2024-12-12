@@ -1,0 +1,9 @@
+/* General Styling */
+body {
+    background-color: #1d2630;
+    color: white;
+}
+
+.error {
+    color: red;
+}

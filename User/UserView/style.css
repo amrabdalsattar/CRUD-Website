@@ -1,0 +1,19 @@
+body {
+    background-color: #1d2630;
+    color: white;
+}
+
+.card {
+    background-color: #1d2630;
+    color: white;
+}
+
+.card-img-top {
+    height: 400px;
+    object-fit: cover;
+}
+
+.btn {
+    border-color: #2d3742;
+    background-color: #1d2630;
+}

@@ -13,9 +13,10 @@ function showAlert(message, className) {
 
 // Clear all fields
 function clearAllFields() {
-    document.querySelector("#productName").value = "";
+    document.querySelector("#bookTitle").value = "";
     document.querySelector("#price").value = "";
-    document.querySelector("#supplier").value = "";
+    document.querySelector("#category").value = "";
+    document.querySelector("#yearOfPublication").value = "";
 }
 
 // Add Data
@@ -24,12 +25,13 @@ document.querySelector("#product-input").addEventListener("submit", (e) => {
     e.preventDefault();
 
     // Get input values
-    const productName = document.querySelector("#productName").value;
+    const bookTitle = document.querySelector("#bookTitle").value;
     const price = document.querySelector("#price").value;
-    const supplier = document.querySelector("#supplier").value;
+    const category = document.querySelector("#category").value;
+    const yearOfPublication = document.querySelector("#yearOfPublication").value;
 
     // Validate input fields
-    if (productName == "" || price == "" || supplier == "") {
+    if (bookTitle == "" || price == "" || category == "" || yearOfPublication == "") {
         showAlert("Please fill all fields", "danger");
     } else if (price < 0) {
         showAlert("Invalid price", "danger");
@@ -39,9 +41,10 @@ document.querySelector("#product-input").addEventListener("submit", (e) => {
             const row = document.createElement("tr");
 
             row.innerHTML = `
-                    <td>${productName}</td>
+                    <td>${bookTitle}</td>
                     <td>$${price}</td>
-                    <td>${supplier}</td>
+                    <td>${category}</td>
+                    <td>${yearOfPublication}</td>
                     <td>
                         <a href="#" class="btn btn-warning btn-sm edit">Edit</a>
                         <a href="#" class="btn btn-danger btn-sm delete">Delete</a>
@@ -51,9 +54,10 @@ document.querySelector("#product-input").addEventListener("submit", (e) => {
             selectedRow = null;
             showAlert("Product Added successfully", "success");
         } else {
-            selectedRow.cells[0].textContent = productName;
+            selectedRow.cells[0].textContent = bookTitle;
             selectedRow.cells[1].textContent = `$${price}`;
-            selectedRow.cells[2].textContent = supplier;
+            selectedRow.cells[2].textContent = category;
+            selectedRow.cells[3].textContent = yearOfPublication;
             selectedRow = null;
             showAlert("Product info updated successfully", "success");
         }
@@ -67,9 +71,10 @@ document.querySelector("#products-list").addEventListener("click", (e) => {
     target = e.target;
     if (target.classList.contains("edit")) {
         selectedRow = target.parentElement.parentElement;
-        document.querySelector("#productName").value = selectedRow.cells[0].textContent;
+        document.querySelector("#bookTitle").value = selectedRow.cells[0].textContent;
         document.querySelector("#price").value = selectedRow.cells[1].textContent.replace("$", "");
-        document.querySelector("#supplier").value = selectedRow.cells[2].textContent;
+        document.querySelector("#category").value = selectedRow.cells[2].textContent;
+        document.querySelector("#yearOfPublication").value = selectedRow.cells[3].textContent;
         document.querySelector(".add-btn").value = "Update Product"; // Change button text
     }
 });
